@@ -1,0 +1,15 @@
+name: IpynbConvertor
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Add Jupyter
+        run: pip install jupyter
+      - name: Run
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        run: python -e 'import glob, os; os.system('jupyter nbconvert –to html_embed \'{}\''.format("".join(glob.glob('./**/*.ipynb', recursive = True))))'
