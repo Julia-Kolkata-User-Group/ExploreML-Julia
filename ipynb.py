@@ -5,7 +5,7 @@ ghtoken = os.getenv('TOKEN')
 
 if __name__ == "__main__":
 
-    os.system('jupyter nbconvert –to html_embed \'{}\''.format(
+    os.system('jupyter nbconvert –to html \'{}\''.format(
         "".join(glob.glob('./**/*.ipynb', recursive=True))))
 
     try:
