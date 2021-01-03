@@ -4,9 +4,8 @@ import os
 ghtoken = os.getenv('TOKEN')
 
 if __name__ == "__main__":
-
-    os.system('jupyter nbconvert –to html \'{}\''.format(
-        "".join(glob.glob('./**/*.ipynb', recursive=True))))
+	for file in glob.glob('./**/*.ipynb', recursive=True):
+	    os.system(f"jupyter nbconvert –to html '{file}'")
 
     try:
         if ghtoken is None:
